@@ -24,6 +24,16 @@
   </head>
 
   <body>
+    <nav>
+      <% if user_signed_in? %>
+        <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign in",  new_user_session_path %>
+      <% end %>
+    </nav>
+    <% flash.each do |kind, message| %>
+      <p class="rounded p-2 <%= kind == "notice" ? "bg-green-100" : "bg-red-100" %>"><%= message %></p>
+    <% end %>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
