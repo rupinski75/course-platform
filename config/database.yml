@@ -18,13 +18,13 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: 127.0.0.1
-  port: 5433
   username: course_platform
-  password: course_platform
 
 development:
   <<: *default
+  host: 127.0.0.1
+  port: 5433
+  password: course_platform
   database: course_platform_development
 
   # The specified database role being used to connect to PostgreSQL.
@@ -91,7 +91,7 @@ production:
   primary: &primary_production
     <<: *default
     database: course_platform_production
-    username: course_platform
+    host: course-platform-db
     password: <%= ENV["COURSE_PLATFORM_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
