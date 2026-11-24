@@ -12,4 +12,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#home"
+  resources :courses do
+    resource :enrollment, only: [ :create, :destroy ]
+    shallow do
+      resources :sections, except: :index do
+        resources :lessons, except: :index
+      end
+    end
+  end
 end
