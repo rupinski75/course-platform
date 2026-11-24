@@ -34,7 +34,7 @@
     <% flash.each do |kind, message| %>
       <p class="rounded p-2 <%= kind == "notice" ? "bg-green-100" : "bg-red-100" %>"><%= message %></p>
     <% end %>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto mt-8 px-5">
       <%= yield %>
     </main>
   </body>
