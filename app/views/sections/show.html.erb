@@ -1,0 +1,14 @@
+<h1 class="text-2xl font-bold mb-4"><%= @section.title %></h1>
+<ul class="list-disc ml-6 mb-6">
+  <% @section.lessons.order(:position).each do |lesson| %>
+    <li><%= link_to lesson.title, lesson_path(lesson) %></li>
+  <% end %>
+</ul>
+<% if current_user&.admin? %>
+  <div class="mb-6 flex gap-4">
+    <%= link_to "Add lesson", new_section_lesson_path(@section), class: "text-blue-600" %>
+    <%= link_to "Edit section", edit_section_path(@section), class: "text-blue-600" %>
+    <%= button_to "Delete section", section_path(@section), method: :delete, class: "text-red-600" %>
+  </div>
+<% end %>
+<%= link_to "Back to #{@section.course.title}", course_path(@section.course), class: "text-sm text-gray-500" %>
