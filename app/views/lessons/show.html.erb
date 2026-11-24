@@ -1,0 +1,8 @@
+<h1 class="text-2xl font-bold mb-4"><%= @lesson.title %></h1>
+<div class="mb-6"><%= simple_format @lesson.content %></div>
+<% if current_user&.admin? %>
+  <div class="mb-6">
+    <%= link_to "Edit lesson", edit_lesson_path(@lesson), class: "text-blue-600" %>
+  </div>
+<% end %>
+<%= link_to "Back to #{@lesson.section.title}", section_path(@lesson.section), class: "text-sm text-gray-500" %>
