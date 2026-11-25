@@ -18,7 +18,7 @@
                   course_path(@course),
                   method: :delete,
                   class: "text-red-600",
-                  data: { confirm: "Delete this course?" } %>
+                  data: { turbo_confirm: "Delete this course?" } %>
   </div>
 <% end %>
 <% @course.sections.order(:position).each do |section| %>
