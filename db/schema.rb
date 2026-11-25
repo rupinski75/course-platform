@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_25_172625) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_25_193330) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -30,6 +30,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_172625) do
     t.index ["course_id"], name: "index_enrollments_on_course_id"
     t.index ["user_id", "course_id"], name: "index_enrollments_on_user_id_and_course_id", unique: true
     t.index ["user_id"], name: "index_enrollments_on_user_id"
+  end
+
+  create_table "lesson_completions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_lesson_completions_on_lesson_id"
+    t.index ["user_id", "lesson_id"], name: "index_lesson_completions_on_user_id_and_lesson_id", unique: true
+    t.index ["user_id"], name: "index_lesson_completions_on_user_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -66,6 +76,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_172625) do
 
   add_foreign_key "enrollments", "courses"
   add_foreign_key "enrollments", "users"
+  add_foreign_key "lesson_completions", "lessons"
+  add_foreign_key "lesson_completions", "users"
   add_foreign_key "lessons", "sections"
   add_foreign_key "sections", "courses"
 end
