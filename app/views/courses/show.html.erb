@@ -5,7 +5,7 @@
   <% if enrolled %>
     <span class="text-green-700 font-semibold">Enrolled</span>
     <%= button_to "Unenroll", course_enrollment_path(@course), method: :delete,
-                  class: "text-red-600", data: { turbo_confirm: "leave this course?" } %>
+                  class: "text-red-600", data: { turbo_confirm: "Leave this course?" } %>
   <% else %>
     <%= button_to "Enroll", course_enrollment_path(@course), method: :post,
                   class: "text-blue-600" %>
