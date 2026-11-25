@@ -1,4 +1,5 @@
-<%= form_with model: [@section, lesson] do |form| %>
+<%# if lesson persisted in the db we use shallow route for the lesson. Full sections/:id/lessons route insted %>
+<%= form_with model: lesson.persisted? ? lesson : [section, lesson] do |form| %>
   <% if lesson.errors.any? %>
     <div class="bg-red-100 text-red-800 rounded p-3 mb-4">
       <ul>
