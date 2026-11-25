@@ -1,8 +1,8 @@
 <%= form_with model: [@section, lesson] do |form| %>
-  <%= if lesson.errors.any? %>
+  <% if lesson.errors.any? %>
     <div class="bg-red-100 text-red-800 rounded p-3 mb-4">
       <ul>
-        <%= lesson.errors.full_messages.each do |message| %>
+        <% lesson.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -18,7 +18,7 @@
   </div>
   <div class="mb-3">
     <%= form.label :position %>
-    <%= form.number_field :position, class: "border rounded w-full p-2 %>
+    <%= form.number_field :position, class: "border rounded w-full p-2" %>
   </div>
   <%= form.submit class: "bg-blue-600 text-white rounded px-4 py-2" %>
 <% end %>
