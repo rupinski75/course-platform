@@ -17,7 +17,9 @@ Rails.application.routes.draw do
     resource :enrollment, only: [ :create, :destroy ]
     shallow do
       resources :sections, except: :index do
-        resources :lessons, except: :index
+        resources :lessons, except: :index do
+          resource :completion, only: [ :create, :destroy ]
+        end
       end
     end
   end
