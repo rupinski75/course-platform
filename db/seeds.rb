@@ -1,4 +1,6 @@
 # Demo data for the course platform.
+# source: https://github.com/appacademy/aa-public-ruby-curriculum
+
 puts "Seeding users..."
 admin = User.find_or_create_by!(email: "admin@demo") do |user|
   user.password = "demopass123"
