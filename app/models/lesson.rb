@@ -1,5 +1,6 @@
 class Lesson < ApplicationRecord
   belongs_to :section
+  has_many :lesson_completions
  
   validates :title, presence: true
 
