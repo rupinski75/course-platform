@@ -47,5 +47,4 @@ class CoursesController < ApplicationController
   def setup_course
     @course = Course.find(params.expect(:id))
   end
-  
 end

@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe User do
   describe "#course_progress" do
-    
     it "returns completed and total lesson counts of that course" do
       user = User.create!(email: "email@email.com", password: "password")
       course1 = Course.create!(title: "Course 1 title")
@@ -38,6 +37,5 @@ RSpec.describe User do
       expect(user.course_progress(course1)).to eq(completed_count: 2, lesson_count: 5)
       expect(user.course_progress(course2)).to eq(completed_count: 1, lesson_count: 5)
     end
-
   end
 end

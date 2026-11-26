@@ -10,7 +10,7 @@ RSpec.describe "Admin requests guard", type: :request  do
       expect(response).to have_http_status(:redirect)
     end
   end
-  
+
   context "not logged in user making POST request to an authoring route" do
     it "does not create an object and redirects" do
       post courses_path, params: { course: { title: "Course title" } }
@@ -18,5 +18,4 @@ RSpec.describe "Admin requests guard", type: :request  do
       expect(response).to have_http_status(:redirect)
     end
   end
-
 end

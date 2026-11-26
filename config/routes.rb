@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "courses#index"
-  
+
   resources :courses do
     resource :enrollment, only: [ :create, :destroy ]
     shallow do

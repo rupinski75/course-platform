@@ -27,5 +27,4 @@ class EnrollmentsController < ApplicationController
   def course_param
     params.expect(:course_id)
   end
-
 end

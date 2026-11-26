@@ -49,5 +49,4 @@ class LessonsController < ApplicationController
   def setup_section
     @section = Section.find(params.expect(:section_id))
   end
-
 end

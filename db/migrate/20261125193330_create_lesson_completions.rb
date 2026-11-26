@@ -8,6 +8,5 @@ class CreateLessonCompletions < ActiveRecord::Migration[8.1]
     end
 
     add_index :lesson_completions, [ :user_id, :lesson_id ], unique: true
-
   end
 end
