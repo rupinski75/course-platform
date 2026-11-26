@@ -1,0 +1,6 @@
+<h1 class="text-2xl font-bold mb-4">Courses</h1>
+<ul class="ml-4 list-disc">
+  <% @courses.each do |course| %>
+    <li><%= link_to course.title, course_path(course) %></li>
+  <% end %>
+</ul>
