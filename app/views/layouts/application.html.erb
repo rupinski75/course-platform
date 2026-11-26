@@ -22,18 +22,23 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <nav>
-      <% if user_signed_in? %>
-        <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "Sign in",  new_user_session_path %>
-      <% end %>
+  <body class="bg-gray-50 min-h-screen">
+    <nav class="bg-white border-b border-gray-200">
+      <div class="container mx-auto flex items-center justify-between px-5 py-3">
+        <%= link_to "Course Platform", root_path, class: "font-bold" %>
+        <% if user_signed_in? %>
+          <%= button_to "Sign out", destroy_user_session_path, method: :delete,
+                         class: "text-sm text-gray-600" %>
+         <% else %>
+           <%= link_to "Sign in", new_user_session_path, class: "text-sm text-gray-600" %>
+        <% end %>
+       </div>
     </nav>
-    <% flash.each do |kind, message| %>
-      <p class="rounded p-2 <%= kind == "notice" ? "bg-green-100" : "bg-red-100" %>"><%= message %></p>
-    <% end %>
+    <div class="container mx-auto px-5">
+      <% flash.each do |kind, message| %>
+        <p class="rounded p-2 mt-4 <%= kind == "notice" ? "bg-green-100" : "bg-red-100" %>"><%= message %></p>
+      <% end %>
+    </div>
     <main class="container mx-auto mt-8 px-5">
       <%= yield %>
     </main>
