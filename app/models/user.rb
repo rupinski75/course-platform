@@ -7,4 +7,12 @@ class User < ApplicationRecord
 
   has_many :enrollments
   has_many :lesson_completions
+
+  def course_progress(course)
+    lesson_count = Lesson.joins(:section).where(sections: { course_id: course }).count
+    completed_count = lesson_completions.joins(lesson: :section)
+                                             .where(sections: { course_id: course }).count
+    { completed_count: completed_count, lesson_count: lesson_count }
+  end
+
 end
