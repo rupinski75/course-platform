@@ -1,7 +1,7 @@
 class CompletionsController < ApplicationController
   before_action :authenticate_user!
   before_action :setup_lesson
-  
+
   def create
     @lesson_completion = current_user.lesson_completions.new(lesson: @lesson)
     if @lesson_completion.save
@@ -27,5 +27,4 @@ class CompletionsController < ApplicationController
   def setup_lesson
     @lesson = Lesson.find(params.expect(:lesson_id))
   end
-
 end

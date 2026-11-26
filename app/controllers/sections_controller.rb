@@ -33,7 +33,7 @@ class SectionsController < ApplicationController
   def destroy
     @course = @section.course
     @section.destroy
-    redirect_to course_path(@course), notice: "Section has been deleted" 
+    redirect_to course_path(@course), notice: "Section has been deleted"
   end
 
   private

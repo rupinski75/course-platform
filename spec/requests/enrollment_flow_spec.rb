@@ -1,9 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Enrollment and completion flow", type: :request do
-
   context "normal user flow with content present" do
-
     it "enrolls, completes a lesson and renders the completion ring" do
       user = User.create!(email: "email2@email.com", password: "password")
       course  = Course.create!(title: "Course title")
@@ -19,7 +17,6 @@ RSpec.describe "Enrollment and completion flow", type: :request do
       expect(response.body).to include("svg")
       expect(response).to have_http_status(:ok)
     end
-
   end
 
   context "when a student tries to enroll two times for a course" do
@@ -33,5 +30,4 @@ RSpec.describe "Enrollment and completion flow", type: :request do
       expect(response).to have_http_status(:redirect)
     end
   end
-
 end

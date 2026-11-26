@@ -14,5 +14,4 @@ class User < ApplicationRecord
                                              .where(sections: { course_id: course }).count
     { completed_count: completed_count, lesson_count: lesson_count }
   end
-
 end
