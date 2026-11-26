@@ -4,6 +4,8 @@
 <div class="mb-6">
   <% if enrolled %>
     <span class="text-green-700 font-semibold">Enrolled</span>
+    <%= render "progress_ring", completed: @progress[:completed_count],
+                                total:     @progress[:lesson_count] %>
     <%= button_to "Unenroll", course_enrollment_path(@course), method: :delete,
                   class: "text-red-600", data: { turbo_confirm: "Leave this course?" } %>
   <% else %>
