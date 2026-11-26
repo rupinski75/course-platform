@@ -22,6 +22,7 @@ class CoursesController < ApplicationController
   end
 
   def show
+    @progress = current_user&.course_progress(@course)
   end
 
   def update
