@@ -1,5 +1,5 @@
 <h1 class="text-2xl font-bold mb-4"><%= @lesson.title %></h1>
-<div class="mb-6"><%= simple_format @lesson.content %></div>
+<div class="mb-6"><%= @lesson.rendered_content %></div>
 <% completed = current_user&.lesson_completions&.exists?(lesson: @lesson) %>
 <div class="mb-6">
   <% if completed %>
