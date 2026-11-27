@@ -64,3 +64,7 @@ group :development do
 end
 
 gem "devise", "~> 5.0"
+
+gem "kramdown", "~> 2.6"
+
+gem "kramdown-parser-gfm", "~> 1.1"
