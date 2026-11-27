@@ -5,14 +5,14 @@ RSpec.describe "Lesson model" do
     let(:course)  { Course.create!(title: "Course") }
     let(:section) { course.sections.create!(title: "Section") }
     let(:lesson)  { section.lessons.create!(title: "Lesson", content: content) }
-    let(:content) { "## Title" }
+    let(:content) { "# Title" }
 
     it "returns html safe output" do
       expect(lesson.rendered_content).to be_html_safe
     end
 
-    context "when the lesson markdown content is a markdown heading" do
-      it "converts the heading to an h2 element" do
+    context "when the lesson markdown content is a  heading" do
+      it "offsets the heading one level down" do
         html_lesson_content = lesson.rendered_content
         expect(html_lesson_content).to match(/<h2[ >]/)
       end
