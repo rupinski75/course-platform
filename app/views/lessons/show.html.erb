@@ -4,7 +4,7 @@
 <div class="mb-6">
   <% if completed %>
     <%= button_to "Lesson completed", lesson_completion_path(@lesson), method: :delete,
-                  class: "btn btn-primary" %>
+                  class: "btn btn-success" %>
   <% else %>
     <%= button_to "Mark complete", lesson_completion_path(@lesson), method: :post,
                   class: "btn btn-primary" %>
