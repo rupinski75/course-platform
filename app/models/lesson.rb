@@ -9,8 +9,8 @@ class Lesson < ApplicationRecord
    def rendered_content
      unless content.blank?
       sanitizer = Rails::Html::SafeListSanitizer.new
-      html_tags = %w[h1 h2 h3 p strong em a ul ol li code pre blockquote table thead tbody tr td th sup]
-      html_content = Kramdown::Document.new(content, input: "GFM").to_html
+      html_tags = %w[h1 h2 h3 h4 h5 h6 p strong em a ul ol li code pre blockquote table thead tbody tr td th sup]
+      html_content = Kramdown::Document.new(content, input: "GFM", header_offset: 1).to_html
       sanitizer.sanitize(html_content, tags: html_tags, attributes: %w[href]).html_safe
      end
   end
