@@ -6,25 +6,27 @@
     <span class="inline-block text-green-700 font-semibold mb-6">Enrolled</span>
     <%= render "progress_ring", completed: @progress[:completed_count],
                                 total:     @progress[:lesson_count] %>
-    <%= button_to "Unenroll", course_enrollment_path(@course), method: :delete,
-                  class: "text-red-600", data: { turbo_confirm: "Leave this course?" } %>
+    <%= button_to "Leave course", course_enrollment_path(@course), method: :delete,
+                  class: "btn btn-danger", data: { turbo_confirm: "Leave this course?" } %>
   <% else %>
     <%= button_to "Enroll", course_enrollment_path(@course), method: :post,
-                  class: "text-blue-600" %>
+                  class: "btn btn-primary" %>
   <% end %>
 </div>
 <% if current_user&.admin? %>
   <div class="mb-6">
-    <%= link_to "Edit course", edit_course_path(@course), class: "text-blue-600" %>
+    <%= link_to "Edit course", edit_course_path(@course), class: "btn btn-secondary" %>
+  </div>
+  <div class="mb-6">
     <%= button_to "Delete course",
                   course_path(@course),
                   method: :delete,
-                  class: "text-red-600",
+                  class: "btn btn-danger",
                   data: { turbo_confirm: "Delete this course?" } %>
   </div>
 <% end %>
 <% @course.sections.order(:position).each do |section| %>
-  <div class="mb-6">
+  <div class="mb-4">
     <h2 class="text-lg font-semibold">
       <%= section.position %>. <%= link_to section.title, section_path(section) %>
     </h2>
@@ -33,11 +35,13 @@
         <li><%= link_to lesson.title, lesson_path(lesson) %></li>
       <% end %>
     </ul>
+  </div>
+  <div class="mb-6">
     <% if current_user&.admin? %>
-      <%= link_to "Add lesson", new_section_lesson_path(section), class: "text-sm text-blue-600" %>
+      <%= link_to "Add lesson", new_section_lesson_path(section), class: "btn btn-primary" %>
     <% end %>
   </div>
 <% end %>
 <% if current_user&.admin? %>
-  <%= link_to "Add section", new_course_section_path(@course), class: "text-blue-600" %>
+  <%= link_to "Add section", new_course_section_path(@course), class: "btn btn-primary" %>
 <% end %>
