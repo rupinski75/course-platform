@@ -3,17 +3,16 @@
 <% completed = current_user&.lesson_completions&.exists?(lesson: @lesson) %>
 <div class="mb-6">
   <% if completed %>
-    <span class="text-green-700 font-semibold">Completed</span>
-    <%= button_to "Remove completion", lesson_completion_path(@lesson), method: :delete,
-                  class: "text-red-600" %>
+    <%= button_to "Lesson completed", lesson_completion_path(@lesson), method: :delete,
+                  class: "btn btn-primary" %>
   <% else %>
-    <%= button_to "Mark as completed", lesson_completion_path(@lesson), method: :post,
-                  class: "text-blue-600" %>
+    <%= button_to "Mark complete", lesson_completion_path(@lesson), method: :post,
+                  class: "btn btn-primary" %>
   <% end %>
 </div>
 <% if current_user&.admin? %>
   <div class="mb-6">
-    <%= link_to "Edit lesson", edit_lesson_path(@lesson), class: "text-blue-600" %>
+    <%= link_to "Edit lesson", edit_lesson_path(@lesson), class: "btn btn-secondary" %>
   </div>
 <% end %>
-<%= link_to "Back to #{@lesson.section.title}", section_path(@lesson.section), class: "text-sm text-gray-500" %>
+<%= link_to "Back to #{@lesson.section.title}", section_path(@lesson.section), class: "btn btn-secondary" %>
