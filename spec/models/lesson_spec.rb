@@ -7,6 +7,10 @@ RSpec.describe "Lesson model" do
     let(:lesson)  { section.lessons.create!(title: "Lesson", content: content) }
     let(:content) { "## Title" }
 
+    it "returns html safe output" do
+      expect(lesson.rendered_content).to be_html_safe
+    end
+
     context "when the lesson markdown content is a markdown heading" do
       it "converts the heading to an h2 element" do
         html_lesson_content = lesson.rendered_content
